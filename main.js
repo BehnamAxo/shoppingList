@@ -21,6 +21,10 @@ app.on('ready', function() {
     // Build menu
     const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
     Menu.setApplicationMenu(mainMenu);
+
+    mainWindow.on('closed', function() {
+        app.quit();
+    });
 });
 
 const createAddWindow = () => {
