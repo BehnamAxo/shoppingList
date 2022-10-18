@@ -33,11 +33,17 @@ const createAddWindow = () => {
         height: 200,
         title: 'Add Shopping List Item'
     });
+
     addWindow.loadURL(url.format({
         pathname: path.join(__dirname, 'addWindow.html'),
         protocol: 'file:',
         slashes: true
     }));
+
+    // Garbage collection handle 
+    addWindow.on('close', function() {
+        addWindow = null;
+    });
 }
 
 const mainMenuTemplate = [
@@ -63,3 +69,28 @@ const mainMenuTemplate = [
         ]
     }
 ];
+
+
+// Mac users can see the file menu
+if (process.platform == 'darwin') {
+    mainMenuTemplate.unshift({})
+}
+
+
+if (process.env.NODE_ENV !== 'production') {
+    mainMenuTemplate.push({
+        label: 'Dev Tools',
+        submenu: [
+            {
+                label: 'Toggle DevTools',
+                accelerator: process.platform == 'darwin' ? 'Command+I': 'Ctrl+I',
+                click(item, focusedWindow) {
+                    focusedWindow.toggleDevTools();
+                }
+            },
+            {
+                role: 'reload'
+            }
+        ]
+    });
+}
