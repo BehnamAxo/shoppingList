@@ -1,0 +1,14 @@
+{
+  "name": "shoppinglist",
+  "version": "1.0.0",
+  "description": "This is a shopping list desktop application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Behnam Amiri",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^21.1.1"
+  }
+}
