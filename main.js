@@ -7,6 +7,8 @@ const { app, BrowserWindow, Menu, ipcMain } = electron;
 let mainWindow;
 let addWindow; 
 
+process.env.NODE_ENV = 'production';
+
 app.on('ready', function() {
     // Create new window 
     mainWindow = new BrowserWindow({
