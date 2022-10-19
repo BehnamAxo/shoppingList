@@ -9,7 +9,12 @@ let addWindow;
 
 app.on('ready', function() {
     // Create new window 
-    mainWindow = new BrowserWindow({});
+    mainWindow = new BrowserWindow({
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: false,
+        }
+    });
 
     // Load html into the window
     mainWindow.loadURL(url.format({
@@ -31,7 +36,11 @@ const createAddWindow = () => {
     addWindow = new BrowserWindow({
         width: 300,
         height: 200,
-        title: 'Add Shopping List Item'
+        title: 'Add Shopping List Item',
+         webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: false,
+        }
     });
 
     addWindow.loadURL(url.format({
